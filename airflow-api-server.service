@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Environment=AIRFLOW_HOME=/var/www/apache-airflow
 # ExecStart=/var/www/apache-airflow/venv/bin/airflow api-server --port 8080
-ExecStart=/bin/bash -c 'source /var/www/apache-airflow/venv/bin/activate && airflow db migrate && airflow api-server --port 8080'
+ExecStart=/bin/bash -c 'source /var/www/apache-airflow/venv/bin/activate && airflow api-server --port 8080'
 Restart=always
 User=root
 
