@@ -12,7 +12,11 @@ pip3 install wheel
 pip3 install -r requirements.txt
 export AIRFLOW_HOME=~/airflow
 airflow db migrate
+
+# Чтобы сгенерировал нам сразу пароль для входа
 airflow standalone
+cp /root/airflow/simple_auth_manager_passwords.json.generated /var/www/apache-airflow/
+chmod 644 /var/www/apache-airflow/simple_auth_manager_passwords.json.generated
 ```
 
 Проверяем как работает
