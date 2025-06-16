@@ -37,9 +37,9 @@ cp airflow-scheduler.service /etc/systemd/system/airflow-scheduler.service
 
 systemctl daemon-reexec
 systemctl daemon-reload
-systemctl enable airflow-webserver
+systemctl enable airflow-api-server
 systemctl enable airflow-scheduler
-systemctl start airflow-webserver
+systemctl start airflow-api-server
 systemctl start airflow-scheduler
 ```
 
