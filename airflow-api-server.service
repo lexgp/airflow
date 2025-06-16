@@ -1,0 +1,12 @@
+[Unit]
+Description=Airflow API Server
+After=network.target
+
+[Service]
+Environment=AIRFLOW_HOME=/var/www/apache-airflow
+ExecStart=/var/www/apache-airflow/venv/bin/airflow api-server --port 8080
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

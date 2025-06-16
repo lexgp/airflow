@@ -1,0 +1,12 @@
+[Unit]
+Description=Airflow Scheduler
+After=network.target
+
+[Service]
+Environment=AIRFLOW_HOME=/var/www/apache-airflow
+ExecStart=/var/www/apache-airflow/venv/bin/airflow scheduler
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
