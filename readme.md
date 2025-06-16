@@ -47,3 +47,6 @@ systemctl start airflow-api-server
 systemctl start airflow-scheduler
 ```
 
+Можно зайти на http://91.200.12.9:8080/ ввести логин пароль из simple_auth_manager_passwords.json.generated и убедиться, что оно работает.
+
+
