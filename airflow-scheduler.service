@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Environment=AIRFLOW_HOME=/var/www/apache-airflow
+Environment=AIRFLOW__CORE__DAGS_FOLDER=/var/www/apache-airflow/dags
 ExecStart=/bin/bash -c 'source /var/www/apache-airflow/venv/bin/activate && airflow scheduler'
 Restart=always
 User=root
