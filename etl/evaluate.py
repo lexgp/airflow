@@ -9,5 +9,5 @@ def evaluate(model, X_test, y_test):
         'recall': recall_score(y_test, y_pred),
         'f1': f1_score(y_test, y_pred),
     }
-    with open('results/metrics.json', 'w') as f:
+    with open('/opt/airflow/results/metrics.json', 'w') as f:
         json.dump(metrics, f, indent=2)
