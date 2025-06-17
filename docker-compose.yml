@@ -14,6 +14,8 @@ services:
       - ./etl:/opt/airflow/etl
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
+      - ./data:/opt/airflow/data
+      - ./results:/opt/airflow/results
       - ./requirements.txt:/requirements.txt
     ports:
       - "8080:8080"
