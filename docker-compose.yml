@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  airflow:
+    image: puckel/docker-airflow:1.10.9
+    restart: always
+    env_file: .env
+    depends_on:
+      - postgres
+    volumes:
+      - ./dags:/usr/local/airflow/dags
+      - ./etl:/usr/local/airflow/etl
+    ports:
+      - "8080:8080"
+    command: webserver
+    environment:
+      - PYTHONPATH=/usr/local/airflow
+
+  scheduler:
+    image: puckel/docker-airflow:1.10.9
+    restart: always
+    env_file: .env
+    depends_on:
+      - airflow
+    volumes:
+      - ./dags:/usr/local/airflow/dags
+      - ./etl:/usr/local/airflow/etl
+    command: scheduler
+    environment:
+      - PYTHONPATH=/usr/local/airflow
