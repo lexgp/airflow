@@ -42,7 +42,7 @@ def step_4_evaluate(**context):
 # 5. Сохранение
 def step_5_save(**context):
     model = context['ti'].xcom_pull(key='model', task_ids='train')
-    save(model)
+    save()
 
 with DAG(
     dag_id='ml_pipeline',
