@@ -6,11 +6,15 @@ services:
     container_name: airflow
     restart: always
     env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./dags:/opt/airflow/dags
       - ./etl:/opt/airflow/etl
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
+      - ./requirements.txt:/requirements.txt
     ports:
       - "8080:8080"
     command: bash -c "
