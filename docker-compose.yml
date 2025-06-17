@@ -1,26 +1,19 @@
-version: '3'
+version: "3.8"
 
 services:
-  airflow-webserver:
-    image: puckel/docker-airflow:1.10.9
+  airflow:
+    image: apache/airflow:2.9.1-python3.10
+    container_name: airflow
     restart: always
     env_file: .env
     volumes:
-      - ./dags:/usr/local/airflow/dags
-      - ./etl:/usr/local/airflow/etl
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
     ports:
       - "8080:8080"
-    command: webserver
-    environment:
-      - PYTHONPATH=/usr/local/airflow
-
-  airflow-scheduler:
-    image: puckel/docker-airflow:1.10.9
-    restart: always
-    env_file: .env
-    volumes:
-      - ./dags:/usr/local/airflow/dags
-      - ./etl:/usr/local/airflow/etl
-    command: scheduler
-    environment:
-      - PYTHONPATH=/usr/local/airflow
+    command: bash -c "
+      airflow db migrate &&
+      airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password 7W899fz4fRAW9mpk &&
+      airflow scheduler &
+      exec airflow webserver"
