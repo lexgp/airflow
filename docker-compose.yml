@@ -6,6 +6,8 @@ services:
     container_name: airflow
     restart: always
     env_file: .env
+    environment:
+      - AIRFLOW__CORE__ENABLE_XCOM_PICKLING=True
     build:
       context: .
       dockerfile: Dockerfile
