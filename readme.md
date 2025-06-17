@@ -78,6 +78,7 @@ graph TD
 
 - ENV-переменные в .env, образец можно взять в .env.example
 - Логирование в каждом модуле
+- Используется внешняя (по отношению к контейнеру), ранее установленная на сервере БД postgresql
 
 **Docker** позволяет запускать Airflow с минимальной настройкой.
 
@@ -133,12 +134,14 @@ load_task = PythonOperator(
 │   ├── evaluate.py
 │   └── save_results.py
 ├── results/
-│   └── (появляются после запуска)
+│   └── metrics.json
+│   └── model.pkl
 ├── result_dump/
 │   └── final_metrics.json
 │   └── final_model.pkl
 ├── docker-compose.yml
 ├── requirements.txt
 ├── .env
+├── .env.example
 └── README.md
 ```
