@@ -49,4 +49,7 @@ systemctl start airflow-scheduler
 
 Можно зайти на http://91.200.12.9:8080/ ввести логин пароль из simple_auth_manager_passwords.json.generated и убедиться, что оно работает.
 
-
+Откуда грузятся задания:
+airflow config get-value core dags_folder
+Адрес конфига
+nano /root/airflow/airflow.cfg

@@ -8,6 +8,7 @@ services:
     env_file: .env
     volumes:
       - ./dags:/opt/airflow/dags
+      - ./etl:/opt/airflow/etl
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
     ports:
