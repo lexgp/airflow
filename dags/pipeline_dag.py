@@ -29,7 +29,7 @@ def step_5_save():
 with DAG(
     dag_id='ml_pipeline',
     start_date=datetime(2023, 1, 1),
-    schedule_interval=None,
+    schedule=None,
     catchup=False
 ) as dag:
     t1 = PythonOperator(task_id='load_data', python_callable=step_1_load)
